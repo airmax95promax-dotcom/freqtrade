@@ -716,6 +716,49 @@ CONF_SCHEMA = {
                 **__MESSAGE_TYPE_DICT,
             },
         },
+        "alphainsider": {
+            "description": "Optional AlphaInsider paper-trade mirror settings.",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "description": "Mirror confirmed dry-run fills to AlphaInsider.",
+                    "type": "boolean",
+                },
+                "api_key": {
+                    "description": (
+                        f"AlphaInsider API token. {__VIA_ENV} "
+                        "FREQTRADE__ALPHAINSIDER__API_KEY"
+                    ),
+                    "type": "string",
+                },
+                "strategy_id": {
+                    "description": (
+                        f"AlphaInsider strategy identifier. {__VIA_ENV} "
+                        "FREQTRADE__ALPHAINSIDER__STRATEGY_ID"
+                    ),
+                    "type": "string",
+                },
+                "base_url": {
+                    "description": "AlphaInsider API base URL.",
+                    "type": "string",
+                    "default": "https://alphainsider.com/api",
+                },
+                "timeout": {"type": "number", "minimum": 1, "default": 10},
+                "state_file": {
+                    "description": "Persistent idempotency and safety-lock state file.",
+                    "type": "string",
+                },
+                "pair_map": {
+                    "description": (
+                        "Map Freqtrade pairs to AlphaInsider stock identifiers or "
+                        "SYMBOL:EXCHANGE values."
+                    ),
+                    "type": "object",
+                    "additionalProperties": {"type": "string"},
+                },
+            },
+            "required": ["enabled"],
+        },
         "discord": {
             "description": "Discord settings.",
             "type": "object",

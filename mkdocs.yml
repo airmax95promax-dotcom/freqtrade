@@ -21,6 +21,7 @@ nav:
         - freqUI: freq-ui.md
         - REST API: rest-api.md
         - Web Hook: webhook-config.md
+        - AlphaInsider paper mirror: alphainsider.md
     - Data Downloading: data-download.md
     - Backtesting: backtesting.md
     - Hyperopt: hyperopt.md

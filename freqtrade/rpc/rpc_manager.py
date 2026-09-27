@@ -45,6 +45,13 @@ class RPCManager:
 
             self.registered_modules.append(Webhook(self._rpc, config))
 
+        # Enable AlphaInsider paper-trade mirroring.
+        if config.get("alphainsider", {}).get("enabled", False):
+            logger.info("Enabling rpc.alphainsider ...")
+            from freqtrade.rpc.alphainsider import AlphaInsider
+
+            self.registered_modules.append(AlphaInsider(self._rpc, config))
+
         # Enable local rest api server for cmd line control
         if config.get("api_server", {}).get("enabled", False):
             logger.info("Enabling rpc.api_server")
